@@ -1,3 +1,4 @@
 export const environment = {
-  production: true
+  url_base: (d: string) => '/cronometro' + d,
+  production: true,
 };

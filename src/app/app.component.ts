@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { Periodo } from './services/cronometro.service'
+
 
 @Component({
   selector: 'app-root',
@@ -7,4 +9,16 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'cronometro';
+
+  date = new Date()
+  time = new Date()
+
+
+  periodo:Partial<Periodo> = {
+    inicio: new Date()
+  }
+
+
+  constructor (){}
+
 }

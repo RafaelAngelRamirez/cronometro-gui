@@ -98,6 +98,16 @@
             ],
             "scripts": []
           }
+        },
+        "deploy": {
+          "builder": "@angular/fire:deploy",
+          "options": {
+            "prerender": false,
+            "ssr": false,
+            "browserTarget": "cronometro:build:production",
+            "firebaseProject": "cronometro-e1954",
+            "firebaseHostingSite": "cronometro-e1954"
+          }
         }
       }
     }
