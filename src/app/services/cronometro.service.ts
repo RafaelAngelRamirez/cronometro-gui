@@ -19,6 +19,12 @@ export class CronometroService {
       .put<Partial<Periodo>>('cronometro', periodo)
       .pipe(map((x: any) => x.periodo));
   }
+
+  ultimo() {
+    return this.http
+      .get<Partial<Periodo>>('cronometro')
+      .pipe(map((x: any) => x.periodo));
+  }
 }
 
 export interface Periodo {
