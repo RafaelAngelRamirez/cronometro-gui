@@ -15,9 +15,7 @@ export class UrlBaseInterceptor implements HttpInterceptor {
     next: HttpHandler
   ): Observable<HttpEvent<unknown>> {
     
-    console.log("interceptor")
     if (!request.url.match(/^http(s)?:\/\/(.*)$/)) {
-      console.log("match")
       const url = `${environment.url_base(request.url)}`.replace(
         /([^:]\/)\/+/g,
         '$1'

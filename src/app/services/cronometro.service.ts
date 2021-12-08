@@ -6,23 +6,25 @@ import { map } from 'rxjs';
   providedIn: 'root',
 })
 export class CronometroService {
+  url = 'cronometro';
+
   constructor(private http: HttpClient) {}
 
   save(periodo: Partial<Periodo> | undefined) {
     return this.http
-      .post<Partial<Periodo>>('cronometro', periodo)
+      .post<Partial<Periodo>>(this.url, periodo)
       .pipe(map((x: any) => x.periodo));
   }
 
   update(periodo: Partial<Periodo> | undefined) {
     return this.http
-      .put<Partial<Periodo>>('cronometro', periodo)
+      .put<Partial<Periodo>>(this.url, periodo)
       .pipe(map((x: any) => x.periodo));
   }
 
   ultimo() {
     return this.http
-      .get<Partial<Periodo>>('cronometro')
+      .get<Partial<Periodo>>(this.url + '/ultimo_registro_pendiente')
       .pipe(map((x: any) => x.periodo));
   }
 }

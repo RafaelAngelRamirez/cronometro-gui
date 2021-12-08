@@ -1,7 +1,11 @@
 <app-cronometro [periodo]="periodo"></app-cronometro>
 
 <div class="center text-center">
-  <button (click)="accion()" type="button" class="btn btn-outline-secondary">
-    {{ accionTxt }}
+  <button
+    (click)="ejecutarAccion()"
+    type="button"
+    class="btn btn-outline-secondary"
+  >
+    {{ accion }}
   </button>
 </div>

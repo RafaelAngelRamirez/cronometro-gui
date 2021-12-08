@@ -9,8 +9,6 @@ import { DateTime, DateTimeFormatOptions } from 'luxon';
   styleUrls: ['./cronometro.component.css'],
 })
 export class CronometroComponent implements OnInit, OnDestroy {
-  
-  
   inicio_txt = '';
   private _inicio = DateTime.now().toJSDate();
   public get inicio() {
@@ -23,8 +21,8 @@ export class CronometroComponent implements OnInit, OnDestroy {
       year: 'numeric',
       month: 'numeric',
       day: 'numeric',
-      hour:'numeric',
-      minute:'numeric',
+      hour: 'numeric',
+      minute: 'numeric',
     };
 
     this.inicio_txt = value.toLocaleDateString('es-ES', options);
@@ -41,14 +39,15 @@ export class CronometroComponent implements OnInit, OnDestroy {
     clearInterval(this.intervalo);
     this._periodo = value;
 
-    console.log(value?.inicio);
+    console.log('set =>', value?.fin)
     if (value?.inicio) {
       this.inicio = new Date(value?.inicio);
       this.transcurrido = this.calcularTranscurrido(this.inicio);
-      if (!value?.fin)
+      if (!value?.fin) {
         this.intervalo = setInterval(() => {
           this.transcurrido = this.calcularTranscurrido(this.inicio);
         }, 1000);
+      } else this.calcularTranscurrido(value.fin);
     }
   }
 
