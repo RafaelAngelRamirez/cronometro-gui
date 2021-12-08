@@ -9,14 +9,15 @@ export class CronometroService {
   constructor(private http: HttpClient) {}
 
   save(periodo: Partial<Periodo> | undefined) {
-    if (periodo) periodo['fin'] = new Date();
     return this.http
       .post<Partial<Periodo>>('cronometro', periodo)
-      .pipe(map((x: any) => x.cronometro));
+      .pipe(map((x: any) => x.periodo));
   }
 
   update(periodo: Partial<Periodo> | undefined) {
-    return this.http.put<Partial<Periodo>>('cronometro', periodo);
+    return this.http
+      .put<Partial<Periodo>>('cronometro', periodo)
+      .pipe(map((x: any) => x.periodo));
   }
 }
 

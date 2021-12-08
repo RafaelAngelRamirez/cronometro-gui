@@ -21,35 +21,33 @@ export class CronometrarComponent implements OnInit {
     this._periodo = value;
   }
 
-  accionTxt: 'iniciar' | 'guardar' = 'iniciar';
+  ultimosPeriodos: Partial<Periodo>[] = [];
+
+  accionTxt: 'iniciar' | 'detener' = 'iniciar';
 
   ngOnInit(): void {}
 
   accion() {
     if (this.periodo) {
       this.accionTxt = 'iniciar';
-      this.guardarPeriodo();
+      this.finalizarPeriodo();
     } else {
       this.periodo = { inicio: new Date() };
-      this.accionTxt = 'guardar';
-
-      //Guardamos el registro en la bd
-
-      this.guardarPeriodo();
+      this.accionTxt = 'detener';
+      this.nuevoPeriodo();
     }
   }
 
-  guardarPeriodo() {
-    console.log('guardarPeriodo');
+  nuevoPeriodo() {
+    this.service.save(this.periodo).subscribe((p) => {
+      this.periodo = p;
+    });
+  }
 
-    if (!this.periodo?._id)
-      this.service.save(this.periodo).subscribe((p) => {
-        console.log(p);
-        this.periodo = p;
-      });
-    else
-      this.service.update(this.periodo).subscribe((p) => {
-        this.periodo = p;
-      });
+  finalizarPeriodo() {
+    this.service.update(this.periodo).subscribe((p) => {
+      this.ultimosPeriodos.push(p);
+      this.periodo = undefined;
+    });
   }
 }
