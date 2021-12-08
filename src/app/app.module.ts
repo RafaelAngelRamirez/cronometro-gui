@@ -5,7 +5,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { PagesModule } from './pages/pages.module';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
-import { UrlBaseInterceptor } from './interceptors/url-base.interceptor'
+import { UrlBaseInterceptor } from './interceptors/url-base.interceptor';
 
 @NgModule({
   declarations: [AppComponent],

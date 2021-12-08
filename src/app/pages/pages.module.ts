@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule, Routes } from '@angular/router';
 import { HistoricoComponent } from './historico/historico.component';
-import { CronometroComponent } from '../components/cronometro/cronometro.component';
+import { ComponentsModule } from '../components/components.module';
 import { CronometrarComponent } from './cronometrar/cronometrar.component';
 
 const routes: Routes = [
@@ -17,7 +17,7 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  declarations: [HistoricoComponent, CronometrarComponent, CronometroComponent],
-  imports: [CommonModule, RouterModule.forChild(routes)],
+  declarations: [HistoricoComponent, CronometrarComponent],
+  imports: [CommonModule, RouterModule.forChild(routes), ComponentsModule],
 })
 export class PagesModule {}
