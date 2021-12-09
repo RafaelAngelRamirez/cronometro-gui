@@ -40,10 +40,12 @@ export class CronometroComponent implements OnInit, OnDestroy {
     clearInterval(this.intervalo);
     this._periodo = value;
 
-    console.log('set =>', value?.fin);
     if (value?.inicio) {
       this.inicio = new Date(value?.inicio);
-      this.transcurrido = this.fechaService.calcularTranscurrido(this.inicio);
+      this.transcurrido = this.fechaService.calcularTranscurrido(
+        this.inicio,
+        value?.fin
+      );
       if (!value?.fin) {
         this.intervalo = setInterval(() => {
           this.transcurrido = this.fechaService.calcularTranscurrido(
