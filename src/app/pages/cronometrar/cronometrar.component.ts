@@ -17,7 +17,6 @@ export class CronometrarComponent implements OnInit {
     return this._periodo;
   }
   public set periodo(value: Partial<Periodo> | undefined) {
-    console.log({ value });
     this._periodo = value;
   }
 
@@ -32,6 +31,10 @@ export class CronometrarComponent implements OnInit {
         if (!this.periodo?.fin) this.accion = 'detener';
       } else this.periodo = undefined;
     });
+
+    this.service
+      .todo()
+      .subscribe((periodos) => (this.ultimosPeriodos = periodos));
   }
 
   ejecutarAccion() {
@@ -60,7 +63,7 @@ export class CronometrarComponent implements OnInit {
   finalizarPeriodo() {
     if (this.periodo) this.periodo['fin'] = new Date();
     this.service.update(this.periodo).subscribe((p) => {
-      this.ultimosPeriodos.push(p);
+      this.ultimosPeriodos.unshift(p);
       this.periodo = undefined;
     });
   }

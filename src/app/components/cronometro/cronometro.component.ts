@@ -2,6 +2,7 @@ import { Component, Input, OnDestroy, OnInit } from '@angular/core';
 import { Periodo } from 'src/app/services/cronometro.service';
 
 import { DateTime, DateTimeFormatOptions } from 'luxon';
+import { FechasService } from 'src/app/services/fechas.service';
 
 @Component({
   selector: 'app-cronometro',
@@ -39,15 +40,17 @@ export class CronometroComponent implements OnInit, OnDestroy {
     clearInterval(this.intervalo);
     this._periodo = value;
 
-    console.log('set =>', value?.fin)
+    console.log('set =>', value?.fin);
     if (value?.inicio) {
       this.inicio = new Date(value?.inicio);
-      this.transcurrido = this.calcularTranscurrido(this.inicio);
+      this.transcurrido = this.fechaService.calcularTranscurrido(this.inicio);
       if (!value?.fin) {
         this.intervalo = setInterval(() => {
-          this.transcurrido = this.calcularTranscurrido(this.inicio);
+          this.transcurrido = this.fechaService.calcularTranscurrido(
+            this.inicio
+          );
         }, 1000);
-      } else this.calcularTranscurrido(value.fin);
+      } else this.fechaService.calcularTranscurrido(value.fin);
     }
   }
 
@@ -55,14 +58,7 @@ export class CronometroComponent implements OnInit, OnDestroy {
     clearInterval(this.intervalo);
   }
 
-  constructor() {}
+  constructor(private fechaService: FechasService) {}
 
   ngOnInit(): void {}
-
-  calcularTranscurrido(inicio: Date) {
-    let trans = DateTime.now()
-      .diff(DateTime.fromJSDate(inicio))
-      .toFormat('hh:mm:ss');
-    return trans;
-  }
 }

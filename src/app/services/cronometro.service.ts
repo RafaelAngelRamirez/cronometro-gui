@@ -27,6 +27,12 @@ export class CronometroService {
       .get<Partial<Periodo>>(this.url + '/ultimo_registro_pendiente')
       .pipe(map((x: any) => x.periodo));
   }
+
+  todo() {
+    return this.http
+      .get<Partial<Periodo>[]>(this.url)
+      .pipe(map((x: any) => x.periodos));
+  }
 }
 
 export interface Periodo {
