@@ -4,6 +4,8 @@ import { RouterModule, Routes } from '@angular/router';
 import { HistoricoComponent } from './historico/historico.component';
 import { ComponentsModule } from '../components/components.module';
 import { CronometrarComponent } from './cronometrar/cronometrar.component';
+import { ConfiguracionesComponent } from './configuraciones/configuraciones.component';
+import { FormsModule } from '@angular/forms';
 
 const routes: Routes = [
   {
@@ -14,10 +16,29 @@ const routes: Routes = [
     path: 'historico',
     component: HistoricoComponent,
   },
+  {
+    path: 'configuracion',
+    component: ConfiguracionesComponent,
+  },
+
+  {
+    path: '**',
+    pathMatch: 'full',
+    redirectTo: '',
+  },
 ];
 
 @NgModule({
-  declarations: [HistoricoComponent, CronometrarComponent],
-  imports: [CommonModule, RouterModule.forChild(routes), ComponentsModule],
+  declarations: [
+    HistoricoComponent,
+    CronometrarComponent,
+    ConfiguracionesComponent,
+  ],
+  imports: [
+    CommonModule,
+    RouterModule.forChild(routes),
+    ComponentsModule,
+    FormsModule,
+  ],
 })
 export class PagesModule {}

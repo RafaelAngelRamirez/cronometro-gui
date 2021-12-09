@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit, Renderer2 } from '@angular/core';
 import {
   CronometroService,
   Periodo,
@@ -9,8 +9,15 @@ import {
   templateUrl: './cronometrar.component.html',
   styleUrls: ['./cronometrar.component.css'],
 })
-export class CronometrarComponent implements OnInit {
-  constructor(private service: CronometroService) {}
+export class CronometrarComponent implements OnInit, OnDestroy {
+  constructor(
+    private service: CronometroService,
+    private renderer: Renderer2
+  ) {}
+
+  ngOnDestroy(): void {
+    this.quitarEstilos();
+  }
 
   private _periodo: Partial<Periodo> | undefined = undefined;
   public get periodo(): Partial<Periodo> | undefined {
@@ -35,6 +42,22 @@ export class CronometrarComponent implements OnInit {
     this.service
       .todo()
       .subscribe((periodos) => (this.ultimosPeriodos = periodos));
+
+    this.agregarEstilos();
+  }
+
+  clases = ['cronometro', 'cronometro_color'];
+
+  agregarEstilos() {
+    let body = document.body;
+
+    this.clases.forEach((x) => {
+      this.renderer.addClass(body, x);
+    });
+  }
+  quitarEstilos() {
+    let body = document.body;
+    this.clases.forEach((x) => this.renderer.removeClass(body, x));
   }
 
   ejecutarAccion() {
