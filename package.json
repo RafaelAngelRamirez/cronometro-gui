@@ -44,6 +44,5 @@
     "node": "16.x.x",
     "npm": "8.x.x"
   },
-  "private": false,
-  
+  "private": false
 }
