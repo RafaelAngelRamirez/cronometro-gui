@@ -17,6 +17,7 @@ export class PeriodoComponent implements OnInit {
   @Input()
   public set periodos(value: Partial<Periodo>[]) {
     this._periodos = value;
+    console.log(value)
     this.filas = this.transformarPeriodos(value);
   }
 

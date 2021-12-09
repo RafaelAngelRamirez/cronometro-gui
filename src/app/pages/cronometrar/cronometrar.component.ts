@@ -63,7 +63,10 @@ export class CronometrarComponent implements OnInit {
   finalizarPeriodo() {
     if (this.periodo) this.periodo['fin'] = new Date();
     this.service.update(this.periodo).subscribe((p) => {
-      this.ultimosPeriodos.unshift(p);
+      this.ultimosPeriodos = [
+        this.periodo as Partial<Periodo>,
+        ...this.ultimosPeriodos,
+      ];
       this.periodo = undefined;
     });
   }
