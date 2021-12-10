@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.4](https://github.com/RafaelAngelRamirez/cronometro-gui/compare/v0.0.3...v0.0.4) (2021-12-10)
+
+
+### Bug Fixes
+
+* No se guardaba periodo al iniciar ([a066142](https://github.com/RafaelAngelRamirez/cronometro-gui/commit/a0661424b20ed40e9064359130ca34f29055c132))
+
 ### [0.0.3](https://github.com/RafaelAngelRamirez/cronometro-gui/compare/v0.0.2...v0.0.3) (2021-12-10)
 
 
