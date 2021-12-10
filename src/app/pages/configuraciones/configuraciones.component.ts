@@ -37,6 +37,8 @@ export class ConfiguracionesComponent implements OnInit, OnDestroy {
     inicio_mes: '',
   };
 
+  totalHoras = '';
+
   ngOnDestroy(): void {
     clearInterval(this.intervalo);
   }
@@ -63,7 +65,23 @@ export class ConfiguracionesComponent implements OnInit, OnDestroy {
     this.service.todo(this.filtros).subscribe((ps) => {
       this.periodos = ps;
       this.periodosBD = ps;
+
+      this.calcularTotalHoras(ps);
     });
+  }
+  calcularTotalHoras(ps: Partial<Periodo>[]) {
+    let resultado = ps
+      .map((p) => {
+        if (p.inicio && p.fin)
+          return this.fechaService.calcularTranscurridoEnHoras(p.inicio, p.fin);
+        if (p.inicio)
+          return this.fechaService.calcularTranscurridoEnHoras(p.inicio);
+
+        return this.fechaService.calcularTranscurridoEnHoras(new Date());
+      })
+      .reduce((pre, cur) => cur + pre, 0);
+
+    this.totalHoras = Math.round((resultado + Number.EPSILON) * 100) / 100 + '';
   }
 
   obtenerUltimoPeriodo() {
