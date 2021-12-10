@@ -2,6 +2,18 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.3](https://github.com/RafaelAngelRamirez/cronometro-gui/compare/v0.0.2...v0.0.3) (2021-12-10)
+
+
+### Features
+
+* Total de horas por filtros se muestra ([fa42c9c](https://github.com/RafaelAngelRamirez/cronometro-gui/commit/fa42c9c657b8e12b315d38a87028554162a0fa10))
+
+
+### Bug Fixes
+
+* Estructrua correcta de filtros ([1460411](https://github.com/RafaelAngelRamirez/cronometro-gui/commit/146041131f9b97f269d6f44fc696d891eb0ec445))
+
 ### [0.0.2](https://github.com/RafaelAngelRamirez/cronometro-gui/compare/v0.0.1...v0.0.2) (2021-12-10)
 
 
