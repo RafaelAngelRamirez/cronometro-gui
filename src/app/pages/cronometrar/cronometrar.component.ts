@@ -40,7 +40,7 @@ export class CronometrarComponent implements OnInit, OnDestroy {
     });
 
     this.service
-      .todo()
+      .todo({ limit: 2 })
       .subscribe((periodos) => (this.ultimosPeriodos = periodos));
 
     this.agregarEstilos();

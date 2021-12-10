@@ -28,28 +28,39 @@ export class CronometroService {
       .pipe(map((x: any) => x.periodo));
   }
 
-  todo() {
+  todo(parametros?: any) {
     return this.http
-      .get<Partial<Periodo>[]>(this.url)
+      .get<Partial<Periodo>[]>(
+        this.url.concat(this.concatenarParametros(parametros))
+      )
       .pipe(map((x: any) => x.periodos));
   }
 
   clientes() {
     return this.http
-      .get<string[]>(this.url+"/clientes")
+      .get<string[]>(this.url + '/clientes')
       .pipe(map((x: any) => x.clientes));
   }
 
   proyectos() {
     return this.http
-      .get<string[]>(this.url+"/proyectos")
+      .get<string[]>(this.url + '/proyectos')
       .pipe(map((x: any) => x.proyectos));
   }
-  
+
   estatus() {
     return this.http
-      .get<string[]>(this.url+"/estatus")
+      .get<string[]>(this.url + '/estatus')
       .pipe(map((x: any) => x.estatus));
+  }
+
+  private concatenarParametros(p: any) {
+    return (
+      '?' +
+      Object.keys(p)
+        .map((x) => `${x}=${p.limit}`)
+        .join('&')
+    );
   }
 }
 
