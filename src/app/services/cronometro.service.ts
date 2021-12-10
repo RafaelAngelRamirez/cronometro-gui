@@ -45,6 +45,12 @@ export class CronometroService {
       .get<string[]>(this.url+"/proyectos")
       .pipe(map((x: any) => x.proyectos));
   }
+  
+  estatus() {
+    return this.http
+      .get<string[]>(this.url+"/estatus")
+      .pipe(map((x: any) => x.estatus));
+  }
 }
 
 export interface Periodo {

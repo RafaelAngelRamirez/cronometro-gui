@@ -1,0 +1,113 @@
+<div class="container">
+  <div class="row">
+    <div class="col-12">
+      <h1>Trabajo actual</h1>
+      <hr />
+    </div>
+
+    <div class="col-12">
+      <div class="row">
+        <div class="col-12">
+          <h3>{{ transcurrido }}</h3>
+          <span class="text-muted">Transcurrido</span>
+        </div>
+
+        <div class="col-12 col-md-6 col-lg-4">
+          <div class="form-group">
+            <input
+              [(ngModel)]="periodoActual.proyecto" 
+              class="form-control"
+              type="text"
+              list="proyectos"
+            />
+            <datalist id="proyectos">
+              <option
+                *ngFor="let proyecto of proyectos"
+                [value]="proyecto"
+              ></option>
+            </datalist>
+            <small class="form-text text-muted">Proyecto</small>
+          </div>
+        </div>
+        <div class="col-12 col-md-6 col-lg-4">
+          <div class="form-group">
+            <input
+              [(ngModel)]="periodoActual.cliente"
+              class="form-control"
+              type="text"
+              list="clientes"
+            />
+            <datalist id="clientes">
+              <option *ngFor="let item of clientes" [value]="item"></option>
+            </datalist>
+            <small class="form-text text-muted">Cliente</small>
+          </div>
+        </div>
+        <div class="col-12 col-md-6 col-lg-4">
+          <div class="form-group">
+            <input
+              [(ngModel)]="periodoActual.estatus"
+              class="form-control"
+              type="text"
+              list="estatus"
+            />
+            <datalist id="estatus">
+              <option *ngFor="let item of estatus" [value]="item"></option>
+            </datalist>
+            <small class="form-text text-muted">Estatus</small>
+          </div>
+        </div>
+        <div class="col-12 col-md-6 col-lg-4">
+          <div class="form-group">
+            <textarea
+              [(ngModel)]="periodoActual.observaciones"
+              class="form-control"
+              rows="3"
+            ></textarea>
+            <small class="form-text text-muted">Observaciones</small>
+          </div>
+        </div>
+
+        <div class="col-12">
+          <hr />
+          <button (click)="save()" type="button" class="btn btn-primary">
+            <i class="fas fa-save"></i> Guardar
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <pre>{{ periodoActual | json }}</pre>
+
+  <br />
+  <br />
+  <br />
+
+  <div class="row">
+    <div class="col-12">
+      <div class="card shadow">
+        <div class="card-body">
+          <div class="col-12 col-md-6">
+            <div class="form-group">
+              <label for="clientes">Clientes</label>
+              <select class="form-control" name="clientes">
+                <option *ngFor="let item of clientes">{{ item }}</option>
+              </select>
+            </div>
+            <div class="col-12 col-md-6">
+              <div class="form-group">
+                <label for="proyectos">proyectos</label>
+                <select class="form-control" name="proyectos">
+                  <option *ngFor="let item of proyectos">{{ item }}</option>
+                </select>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <app-periodo [periodos]="periodos"></app-periodo>
+  </div>
+</div>
