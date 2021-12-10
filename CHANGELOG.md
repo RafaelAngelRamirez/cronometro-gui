@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.2](https://github.com/RafaelAngelRamirez/cronometro-gui/compare/v0.0.1...v0.0.2) (2021-12-10)
+
+
+### Bug Fixes
+
+* Captación de proyecto/cliente desde nuevo periodo ([5aefc72](https://github.com/RafaelAngelRamirez/cronometro-gui/commit/5aefc727de84716626e89c04f8e029abd4bfea2f))
+* Proyecto y cliente se toman si no existe en nuevo periodo desde anterior ([5d2c426](https://github.com/RafaelAngelRamirez/cronometro-gui/commit/5d2c42630a1e4db409afa80e767c6d40b578a496))
+
 ### 0.0.1 (2021-12-10)
 
 
