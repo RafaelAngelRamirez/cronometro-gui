@@ -33,6 +33,18 @@ export class CronometroService {
       .get<Partial<Periodo>[]>(this.url)
       .pipe(map((x: any) => x.periodos));
   }
+
+  clientes() {
+    return this.http
+      .get<string[]>(this.url+"/clientes")
+      .pipe(map((x: any) => x.clientes));
+  }
+
+  proyectos() {
+    return this.http
+      .get<string[]>(this.url+"/proyectos")
+      .pipe(map((x: any) => x.proyectos));
+  }
 }
 
 export interface Periodo {
