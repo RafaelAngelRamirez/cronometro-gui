@@ -58,8 +58,9 @@ export class CronometroService {
     if (!p) return '';
     return (
       '?' +
-      Object.keys(p)
-        .map((x) => `${x}=${p.limit}`)
+      Object.entries(p)
+        .filter(([key, value]) => value !== '')
+        .map(([key, value]) => `${key}=${value}`)
         .join('&')
     );
   }

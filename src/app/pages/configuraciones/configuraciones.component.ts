@@ -27,6 +27,14 @@ export class ConfiguracionesComponent implements OnInit, OnDestroy {
 
   intervalo: any;
 
+  filtros = {
+    cliente: '',
+    proyecto: '',
+    estatus: '',
+    dia: '',
+    mes: '',
+  };
+
   ngOnDestroy(): void {
     clearInterval(this.intervalo);
   }
@@ -50,7 +58,7 @@ export class ConfiguracionesComponent implements OnInit, OnDestroy {
   }
 
   obtenerTodosLosPeriodos() {
-    this.service.todo().subscribe((ps) => {
+    this.service.todo(this.filtros).subscribe((ps) => {
       this.periodos = ps;
       this.periodosBD = ps;
     });
@@ -68,7 +76,6 @@ export class ConfiguracionesComponent implements OnInit, OnDestroy {
       }
     });
   }
- 
 
   calcularTranscurrido(p: Periodo) {
     this.transcurrido = this.fechaService.calcularTranscurrido(p.inicio, p.fin);
