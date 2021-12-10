@@ -66,22 +66,9 @@ export class ConfiguracionesComponent implements OnInit, OnDestroy {
           this.calcularTranscurrido(p);
         }, 1000);
       }
-
-      //Rellenamos cliente y proyectos
-      this.obtenerClienteYProyectoAnterior();
     });
   }
-  obtenerClienteYProyectoAnterior() {
-    if (this.periodoActual.cliente && this.periodoActual.proyecto) return;
-    this.service.todo({ limit: 2 }).subscribe((dato) => {
-      //El segundo dato trae los ultimos
-      if (dato[1]) {
-        this.periodoActual.cliente = dato[1].cliente;
-        this.periodoActual.proyecto = dato[1].proyecto;
-        this.save();
-      }
-    });
-  }
+ 
 
   calcularTranscurrido(p: Periodo) {
     this.transcurrido = this.fechaService.calcularTranscurrido(p.inicio, p.fin);

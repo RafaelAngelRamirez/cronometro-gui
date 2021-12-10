@@ -1,7 +1,13 @@
 <div class="container">
   <div class="row">
     <div class="col-12">
-      <h1>Trabajo actual</h1>
+      <h1>
+        <a [routerLink]="['/']" class="btn btn-outline-primary mr-3" role="button">
+          <i class="fas fa-arrow-left"></i
+        ></a>
+
+        Trabajo actual
+      </h1>
       <hr />
     </div>
 
@@ -15,7 +21,7 @@
         <div class="col-12 col-md-6 col-lg-4">
           <div class="form-group">
             <input
-              [(ngModel)]="periodoActual.proyecto" 
+              [(ngModel)]="periodoActual.proyecto"
               class="form-control"
               type="text"
               list="proyectos"
