@@ -69,5 +69,5 @@ export interface Periodo {
   proyecto: string;
   observaciones: string;
   estatus: 'pagado' | 'pendiente' | 'cancelado' | 'en proceso';
-  cliente: String;
+  cliente: string;
 }

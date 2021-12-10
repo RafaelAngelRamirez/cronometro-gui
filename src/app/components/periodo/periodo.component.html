@@ -1,13 +1,13 @@
-<div *ngIf="periodos.length; else noHayTemplate" class="container">
+<ng-container *ngIf="periodos.length; else noHayTemplate" class="container">
   <div *ngFor="let fila of filas" class="row">
     <ng-container *ngFor="let columna of fila.columnas">
-      <div class="col-6 mt-1 col-lg-3 mt-lg-0">
+      <div class="col-6 mt-1 col-lg-3">
         <div class="dato">{{ columna.dato }}</div>
         <div class="encabezado">{{ columna.encabezado }}</div>
       </div>
     </ng-container>
     <hr />
   </div>
-</div>
+</ng-container>
 
 <ng-template #noHayTemplate> No hay periodos para mostrar </ng-template>

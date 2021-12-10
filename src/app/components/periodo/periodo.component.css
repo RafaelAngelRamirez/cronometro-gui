@@ -3,4 +3,10 @@
   font-weight: 100;
 }
 
+.encabezado {
+  display: none;
+}
 
+.row:hover .encabezado, .row:active .encabezado {
+  display: block;
+}

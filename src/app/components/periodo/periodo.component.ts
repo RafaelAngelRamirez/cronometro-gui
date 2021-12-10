@@ -61,7 +61,7 @@ export class PeriodoComponent implements OnInit {
           },
           {
             encabezado: 'cliente',
-            dato: '',
+            dato: per.cliente,
           },
         ]
       );
