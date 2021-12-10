@@ -29,10 +29,10 @@ export class CronometroService {
   }
 
   todo(parametros?: any) {
+    let url = this.url.concat(this.concatenarParametros(parametros));
+
     return this.http
-      .get<Partial<Periodo>[]>(
-        this.url.concat(this.concatenarParametros(parametros))
-      )
+      .get<Partial<Periodo>[]>(url)
       .pipe(map((x: any) => x.periodos));
   }
 
@@ -55,6 +55,7 @@ export class CronometroService {
   }
 
   private concatenarParametros(p: any) {
+    if (!p) return '';
     return (
       '?' +
       Object.keys(p)
