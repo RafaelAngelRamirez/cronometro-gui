@@ -83,10 +83,11 @@ export class CronometrarComponent implements OnInit, OnDestroy {
       if (dato[1] && this.periodo) {
         this.periodo['cliente'] = dato[1].cliente;
         this.periodo['proyecto'] = dato[1].proyecto;
-        this.service.save(this.periodo).subscribe((p) => {
-          this.periodo = p;
-        });
       }
+
+      this.service.save(this.periodo).subscribe((p) => {
+        this.periodo = p;
+      });
     });
   }
 
