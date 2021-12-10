@@ -144,26 +144,52 @@
               <div class="form-group">
                 <input
                   (change)="obtenerTodosLosPeriodos()"
-                  [(ngModel)]="filtros.dia"
+                  [(ngModel)]="filtros.inicio_dia"
                   type="text"
                   class="form-control"
                 />
-                <small id="helpId" class="form-text text-muted">Día</small>
+                <small id="helpId" class="form-text text-muted"
+                  >Inicio día</small
+                >
               </div>
             </div>
             <div class="col-12 col-md-4">
               <div class="form-group">
                 <input
                   (change)="obtenerTodosLosPeriodos()"
-                  [(ngModel)]="filtros.mes"
+                  [(ngModel)]="filtros.inicio_mes"
                   type="text"
                   class="form-control"
                 />
-                <small id="helpId" class="form-text text-muted">Mes</small>
+                <small id="helpId" class="form-text text-muted"
+                  >Inicio mes</small
+                >
+              </div>
+            </div>
+            <div class="col-12 col-md-4">
+              <div class="form-group">
+                <input
+                  (change)="obtenerTodosLosPeriodos()"
+                  [(ngModel)]="filtros.fin_dia"
+                  type="text"
+                  class="form-control"
+                />
+                <small id="helpId" class="form-text text-muted">Fin día</small>
+              </div>
+            </div>
+            <div class="col-12 col-md-4">
+              <div class="form-group">
+                <input
+                  (change)="obtenerTodosLosPeriodos()"
+                  [(ngModel)]="filtros.fin_mes"
+                  type="text"
+                  class="form-control"
+                />
+                <small id="helpId" class="form-text text-muted">Fin mes</small>
               </div>
             </div>
 
-            <pre>{{filtros | json}}</pre>
+            <pre>{{ filtros | json }}</pre>
 
             <div class="col-12 mt-5">
               <h3>Total de horas: <b>99:99:00</b></h3>

@@ -31,8 +31,10 @@ export class ConfiguracionesComponent implements OnInit, OnDestroy {
     cliente: '',
     proyecto: '',
     estatus: '',
-    dia: '',
-    mes: '',
+    fin_dia: '',
+    inicio_dia: '',
+    fin_mes: '',
+    inicio_mes: '',
   };
 
   ngOnDestroy(): void {
