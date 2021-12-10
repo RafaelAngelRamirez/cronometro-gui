@@ -34,40 +34,42 @@ export class PeriodoComponent implements OnInit {
   };
 
   transformarPeriodos(periodos: Partial<Periodo>[]) {
-    return periodos.map((periodo) => {
-      let fila: Fila = {
-        columnas: [],
-      };
+    return periodos
+      .filter((x) => x?.fin)
+      .map((periodo) => {
+        let fila: Fila = {
+          columnas: [],
+        };
 
-      let per = periodo as Periodo;
+        let per = periodo as Periodo;
 
-      fila.columnas.push(
-        ...[
-          {
-            encabezado: 'inicio',
-            dato: new Date(per.inicio).toLocaleDateString(
-              'es-ES',
-              this.options
-            ),
-          },
-          {
-            encabezado: 'transcurrido',
-            dato: this.fechaService.calcularTranscurrido(per.inicio, per.fin),
-          },
+        fila.columnas.push(
+          ...[
+            {
+              encabezado: 'inicio',
+              dato: new Date(per.inicio).toLocaleDateString(
+                'es-ES',
+                this.options
+              ),
+            },
+            {
+              encabezado: 'transcurrido',
+              dato: this.fechaService.calcularTranscurrido(per.inicio, per.fin),
+            },
 
-          {
-            encabezado: 'proyecto',
-            dato: per.proyecto,
-          },
-          {
-            encabezado: 'cliente',
-            dato: per.cliente,
-          },
-        ]
-      );
+            {
+              encabezado: 'proyecto',
+              dato: per.proyecto,
+            },
+            {
+              encabezado: 'cliente',
+              dato: per.cliente,
+            },
+          ]
+        );
 
-      return fila;
-    });
+        return fila;
+      });
   }
 }
 
