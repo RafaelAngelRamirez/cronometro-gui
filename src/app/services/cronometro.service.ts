@@ -16,6 +16,11 @@ export class CronometroService {
       .pipe(map((x: any) => x.periodo));
   }
 
+  delete(_id: string) {
+    return this.http
+    .delete(this.url.concat(`/{_id}`))
+  }
+
   update(periodo: Partial<Periodo> | undefined) {
     return this.http
       .put<Partial<Periodo>>(this.url, periodo)

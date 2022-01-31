@@ -15,7 +15,7 @@
       <hr />
     </div>
 
-    <div class="col-12">
+    <div *ngIf="periodoActual" class="col-12">
       <div class="row">
         <div class="col-12">
           <h3>{{ transcurrido }}</h3>
@@ -78,11 +78,15 @@
           </div>
         </div>
 
-        <div class="col-12">
+        <div class="col-12 text-end">
           <hr />
-          <button (click)="save()" type="button" class="btn btn-primary">
+          <a  (click)="save()"  class="btn btn-primary me-3" href="javascript:void(0)" >
             <i class="fas fa-save"></i> Guardar
-          </button>
+          </a>
+
+          <a (click)="delete()"  class="btn btn-danger " href="javascript:void(0)" >
+            <i class="fas fa-times"></i> Eliminar
+          </a>
         </div>
       </div>
     </div>

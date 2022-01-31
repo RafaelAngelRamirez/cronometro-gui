@@ -1,9 +1,11 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Router } from '@angular/router'
 import {
   CronometroService,
   Periodo,
 } from 'src/app/services/cronometro.service';
 import { FechasService } from 'src/app/services/fechas.service';
+import { MensajesService } from 'src/app/services/mensajes.service';
 
 @Component({
   selector: 'app-configuraciones',
@@ -12,6 +14,8 @@ import { FechasService } from 'src/app/services/fechas.service';
 })
 export class ConfiguracionesComponent implements OnInit, OnDestroy {
   constructor(
+    private router: Router,
+    private msjService: MensajesService,
     private service: CronometroService,
     private fechaService: FechasService
   ) {}
@@ -86,6 +90,14 @@ export class ConfiguracionesComponent implements OnInit, OnDestroy {
 
   editarPeriodo(per: Partial<Periodo> | undefined = undefined) {
     let procesarPeriodo = (p: Partial<Periodo>) => {
+
+      if ( !p ) {
+        this.router.navigate(['/'])
+
+        this.msjService.info("No hay periodos para configurar")
+        return 
+      } 
+
       this.periodoActual = p;
       this.calcularTranscurrido(p);
       if (!p.fin) {
@@ -100,7 +112,7 @@ export class ConfiguracionesComponent implements OnInit, OnDestroy {
   }
 
   calcularTranscurrido(p: Partial<Periodo>) {
-    if (p.inicio)
+    if (p?.inicio)
       this.transcurrido = this.fechaService.calcularTranscurrido(
         p.inicio,
         p.fin
@@ -109,5 +121,21 @@ export class ConfiguracionesComponent implements OnInit, OnDestroy {
 
   save() {
     this.service.update(this.periodoActual).subscribe(() => {});
+  }
+
+  delete() {
+    if (this.periodoActual._id) {
+      let r = this.msjService.confirmacion(
+        'Vas a eliminar este registro. Esto no se puede deshacer.'
+      );
+
+      if (r)
+        this.service.delete(this.periodoActual._id).subscribe(() => {
+          this.periodos = this.periodos.filter(
+            (x) => x._id !== this.periodoActual._id
+          );
+          this.editarPeriodo();
+        });
+    }
   }
 }
