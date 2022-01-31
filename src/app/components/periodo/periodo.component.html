@@ -1,7 +1,10 @@
 <ng-container *ngIf="periodos.length; else noHayTemplate" class="container">
   <div *ngFor="let fila of filas" class="row">
     <ng-container *ngFor="let columna of fila.columnas">
-      <div class="col-6 mt-1 col-lg-3">
+      <div
+
+      (click)="seleccionar(fila.periodo)"
+      class="col-6 mt-1 col-lg-3">
         <div class="dato">{{ columna.dato }}</div>
         <div class="encabezado">{{ columna.encabezado }}</div>
       </div>

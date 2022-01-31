@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { DateTimeFormatOptions } from 'luxon';
 import { Periodo } from 'src/app/services/cronometro.service';
 import { FechasService } from 'src/app/services/fechas.service';
@@ -20,6 +20,8 @@ export class PeriodoComponent implements OnInit {
     this.filas = this.transformarPeriodos(value);
   }
 
+  @Output() seleccionado = new EventEmitter<Partial<Periodo>>();
+
   constructor(private fechaService: FechasService) {}
 
   ngOnInit(): void {}
@@ -39,6 +41,7 @@ export class PeriodoComponent implements OnInit {
       .map((periodo) => {
         let fila: Fila = {
           columnas: [],
+          periodo,
         };
 
         let per = periodo as Periodo;
@@ -71,6 +74,10 @@ export class PeriodoComponent implements OnInit {
         return fila;
       });
   }
+
+  seleccionar(per: Partial<Periodo>) {
+    this.seleccionado.emit(per);
+  }
 }
 
 interface transformaciones {
@@ -82,6 +89,7 @@ interface transformaciones {
 
 interface Fila {
   columnas: Columna[];
+  periodo: Partial<Periodo>;
 }
 
 interface Columna {
