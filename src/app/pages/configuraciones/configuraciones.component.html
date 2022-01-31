@@ -204,5 +204,8 @@
   <br />
   <br />
 
-  <app-periodo [periodos]="periodos"></app-periodo>
+  <app-periodo
+    [periodos]="periodos"
+    (seleccionado)="editarPeriodo($event)"
+  ></app-periodo>
 </div>

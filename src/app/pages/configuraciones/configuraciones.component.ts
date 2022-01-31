@@ -22,7 +22,7 @@ export class ConfiguracionesComponent implements OnInit, OnDestroy {
   proyectos: string[] = [];
   estatus: string[] = [];
 
-  periodoActual: Periodo = {} as Periodo;
+  periodoActual: Partial<Periodo> = {} as Partial<Periodo>;
   transcurrido = '';
 
   intervalo: any;
@@ -44,7 +44,7 @@ export class ConfiguracionesComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit(): void {
-    this.obtenerUltimoPeriodo();
+    this.editarPeriodo();
     this.obtenerTodosLosPeriodos();
     this.obtenerClientes();
     this.obtenerProyectos();
@@ -84,21 +84,27 @@ export class ConfiguracionesComponent implements OnInit, OnDestroy {
     this.totalHoras = Math.round((resultado + Number.EPSILON) * 100) / 100 + '';
   }
 
-  obtenerUltimoPeriodo() {
-    this.service.ultimo().subscribe((p) => {
+  editarPeriodo(per: Partial<Periodo> | undefined = undefined) {
+    let procesarPeriodo = (p: Partial<Periodo>) => {
       this.periodoActual = p;
       this.calcularTranscurrido(p);
-
       if (!p.fin) {
         this.intervalo = setInterval(() => {
           this.calcularTranscurrido(p);
         }, 1000);
       }
-    });
+    };
+
+    if (!per) this.service.ultimo().subscribe(procesarPeriodo);
+    else procesarPeriodo(per);
   }
 
-  calcularTranscurrido(p: Periodo) {
-    this.transcurrido = this.fechaService.calcularTranscurrido(p.inicio, p.fin);
+  calcularTranscurrido(p: Partial<Periodo>) {
+    if (p.inicio)
+      this.transcurrido = this.fechaService.calcularTranscurrido(
+        p.inicio,
+        p.fin
+      );
   }
 
   save() {
