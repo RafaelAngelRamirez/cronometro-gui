@@ -33,7 +33,7 @@
               class="form-control"
               type="datetime-local"
               step="1"
-              max="{{periodoActual.fin | date:'yyyy-MM-ddTHH:mm:ss'}}"
+              max="{{ periodoActual.fin | date: 'yyyy-MM-ddTHH:mm:ss' }}"
             />
           </div>
         </div>
@@ -96,7 +96,10 @@
             class="btn btn-primary me-3"
             href="javascript:void(0)"
           >
-            <i class="fas fa-save"></i> Guardar
+            <ng-container *ngIf="!cargando; else spinner">
+              <i class="fas fa-save"></i>
+            </ng-container>
+            Guardar
           </a>
 
           <a
@@ -104,7 +107,10 @@
             class="btn btn-danger"
             href="javascript:void(0)"
           >
-            <i class="fas fa-times"></i> Eliminar
+            <ng-container *ngIf="!cargando; else spinner">
+              <i class="fas fa-times"></i>
+            </ng-container>
+            Eliminar
           </a>
         </div>
       </div>
@@ -232,3 +238,7 @@
     (seleccionado)="editarPeriodo($event)"
   ></app-periodo>
 </div>
+
+<ng-template #spinner>
+  <i class="fas fa-sync-alt fa-spin"></i>
+</ng-template>

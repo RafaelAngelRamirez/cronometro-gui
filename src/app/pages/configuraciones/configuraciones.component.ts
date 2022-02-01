@@ -31,6 +31,14 @@ export class ConfiguracionesComponent implements OnInit, OnDestroy {
   clientes: string[] = [];
   proyectos: string[] = [];
   estatus: string[] = [];
+  private _cargando = false;
+  public get cargando() {
+    return this._cargando;
+  }
+  public set cargando(value) {
+    this._cargando = value;
+    this.protocoloCarga(value);
+  }
 
   private _periodoActual: Partial<Periodo> = {} as Partial<Periodo>;
   public get periodoActual(): Partial<Periodo> {
@@ -117,8 +125,10 @@ export class ConfiguracionesComponent implements OnInit, OnDestroy {
           this.calcularTranscurrido(p);
         }, 1000);
       }
+      this.cargando = false;
     };
 
+    this.cargando = true;
     if (!per) this.service.ultimo().subscribe(procesarPeriodo);
     else procesarPeriodo(per);
   }
@@ -132,10 +142,14 @@ export class ConfiguracionesComponent implements OnInit, OnDestroy {
   }
 
   save() {
-    this.service.update(this.periodoActual).subscribe(() => {});
+    this.cargando = true;
+    this.service.update(this.periodoActual).subscribe(() => {
+      this.cargando = false;
+    });
   }
 
   delete() {
+    this.cargando = true;
     if (this.periodoActual._id) {
       let r = this.msjService.confirmacion(
         'Vas a eliminar este registro. Esto no se puede deshacer.'
@@ -147,8 +161,17 @@ export class ConfiguracionesComponent implements OnInit, OnDestroy {
             (x) => x._id !== this.periodoActual._id
           );
           this.editarPeriodo();
+          this.cargando = false;
         });
     }
   }
 
+  protocoloCarga(cargando: boolean) {
+    let inputs = Array.from(document.getElementsByTagName('input'));
+    inputs.forEach((i) => (i.disabled = cargando));
+    let textAreas = Array.from(document.getElementsByTagName('textarea'));
+    textAreas.forEach((i) => (i.disabled = cargando));
+    let selects = Array.from(document.getElementsByTagName('select'));
+    selects.forEach((i) => (i.disabled = cargando));
+  }
 }
