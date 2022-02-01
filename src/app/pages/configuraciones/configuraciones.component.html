@@ -20,34 +20,29 @@
         <div class="col-12">
           <span class="text-muted">Transcurrido</span>
           <h3>{{ transcurrido }}</h3>
-
         </div>
-        
-        <hr>
+
+        <hr />
         <div class="col-12 col-md-6 col-lg-4">
           <div class="form-group">
             <small class="form-text text-muted">Inicio</small>
 
-            
             <input
               [ngModel]="periodoActual.inicio | date: 'yyyy-MM-ddTHH:mm'"
               class="form-control"
               type="datetime-local"
             />
-
-           
           </div>
         </div>
         <div class="col-12 col-md-6 col-lg-4">
           <div class="form-group">
             <small class="form-text text-muted">Fin</small>
             <input
-              [ngModel]="periodoActual.fin | date:'yyyy-MM-ddTHH:mm'"
+              [ngModel]="periodoActual.fin | date: 'yyyy-MM-ddTHH:mm'"
               (ngModelChange)="periodoActual.fin = $event"
               class="form-control"
               type="datetime-local"
             />
-            
           </div>
         </div>
         <div class="col-12 col-md-6 col-lg-4">
@@ -91,11 +86,19 @@
 
         <div class="col-12 text-end">
           <hr />
-          <a  (click)="save()"  class="btn btn-primary me-3" href="javascript:void(0)" >
+          <a
+            (click)="save()"
+            class="btn btn-primary me-3"
+            href="javascript:void(0)"
+          >
             <i class="fas fa-save"></i> Guardar
           </a>
 
-          <a (click)="delete()"  class="btn btn-danger " href="javascript:void(0)" >
+          <a
+            (click)="delete()"
+            class="btn btn-danger"
+            href="javascript:void(0)"
+          >
             <i class="fas fa-times"></i> Eliminar
           </a>
         </div>
