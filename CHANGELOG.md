@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.9](https://github.com/RafaelAngelRamirez/cronometro-gui/compare/v0.0.8...v0.0.9) (2022-02-01)
+
+
+### Bug Fixes
+
+* Error al compilar cli. ([3a4091d](https://github.com/RafaelAngelRamirez/cronometro-gui/commit/3a4091de5adac94e00b3dce1055736a865f47e56))
+
 ### [0.0.8](https://github.com/RafaelAngelRamirez/cronometro-gui/compare/v0.0.7...v0.0.8) (2022-02-01)
 
 
