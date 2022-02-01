@@ -18,29 +18,41 @@
     <div *ngIf="periodoActual" class="col-12">
       <div class="row">
         <div class="col-12">
-          <h3>{{ transcurrido }}</h3>
           <span class="text-muted">Transcurrido</span>
-        </div>
+          <h3>{{ transcurrido }}</h3>
 
+        </div>
+        
+        <hr>
         <div class="col-12 col-md-6 col-lg-4">
           <div class="form-group">
+            <small class="form-text text-muted">Inicio</small>
+
+            
             <input
-              [(ngModel)]="periodoActual.proyecto"
+              [ngModel]="periodoActual.inicio | date: 'yyyy-MM-ddTHH:mm'"
               class="form-control"
-              type="text"
-              list="proyectos"
+              type="datetime-local"
             />
-            <datalist id="proyectos">
-              <option
-                *ngFor="let proyecto of proyectos"
-                [value]="proyecto"
-              ></option>
-            </datalist>
-            <small class="form-text text-muted">Proyecto</small>
+
+           
           </div>
         </div>
         <div class="col-12 col-md-6 col-lg-4">
           <div class="form-group">
+            <small class="form-text text-muted">Fin</small>
+            <input
+              [ngModel]="periodoActual.fin | date:'yyyy-MM-ddTHH:mm'"
+              (ngModelChange)="periodoActual.fin = $event"
+              class="form-control"
+              type="datetime-local"
+            />
+            
+          </div>
+        </div>
+        <div class="col-12 col-md-6 col-lg-4">
+          <div class="form-group">
+            <small class="form-text text-muted">Cliente</small>
             <input
               [(ngModel)]="periodoActual.cliente"
               class="form-control"
@@ -50,11 +62,11 @@
             <datalist id="clientes">
               <option *ngFor="let item of clientes" [value]="item"></option>
             </datalist>
-            <small class="form-text text-muted">Cliente</small>
           </div>
         </div>
         <div class="col-12 col-md-6 col-lg-4">
           <div class="form-group">
+            <small class="form-text text-muted">Estatus</small>
             <input
               [(ngModel)]="periodoActual.estatus"
               class="form-control"
@@ -64,17 +76,16 @@
             <datalist id="estatus">
               <option *ngFor="let item of estatus" [value]="item"></option>
             </datalist>
-            <small class="form-text text-muted">Estatus</small>
           </div>
         </div>
         <div class="col-12 col-md-6 col-lg-4">
           <div class="form-group">
+            <small class="form-text text-muted">Observaciones</small>
             <textarea
               [(ngModel)]="periodoActual.observaciones"
               class="form-control"
               rows="3"
             ></textarea>
-            <small class="form-text text-muted">Observaciones</small>
           </div>
         </div>
 

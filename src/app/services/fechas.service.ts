@@ -16,7 +16,7 @@ export class FechasService {
 
     return finLuxon.diff(inicioLuxon).toFormat('hh:mm:ss');
   }
- 
+
   calcularTranscurridoEnHoras(inicio: Date, fin?: Date) {
     let inicioLuxon: DateTime = DateTime.fromJSDate(new Date(inicio));
     let finLuxon: DateTime;
@@ -24,6 +24,6 @@ export class FechasService {
     if (!fin) finLuxon = DateTime.now();
     else finLuxon = DateTime.fromJSDate(new Date(fin));
 
-    return finLuxon.diff(inicioLuxon).as('hours')
+    return finLuxon.diff(inicioLuxon).as('hours');
   }
 }

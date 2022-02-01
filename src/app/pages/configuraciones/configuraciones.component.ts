@@ -1,5 +1,11 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
-import { Router } from '@angular/router'
+import {
+  Component,
+  OnInit,
+  OnDestroy,
+  OnChanges,
+  SimpleChanges,
+} from '@angular/core';
+import { Router } from '@angular/router';
 import {
   CronometroService,
   Periodo,
@@ -26,7 +32,15 @@ export class ConfiguracionesComponent implements OnInit, OnDestroy {
   proyectos: string[] = [];
   estatus: string[] = [];
 
-  periodoActual: Partial<Periodo> = {} as Partial<Periodo>;
+  private _periodoActual: Partial<Periodo> = {} as Partial<Periodo>;
+  public get periodoActual(): Partial<Periodo> {
+    return this._periodoActual;
+  }
+  public set periodoActual(value: Partial<Periodo>) {
+    console.log(value);
+    this._periodoActual = value;
+  }
+
   transcurrido = '';
 
   intervalo: any;
@@ -90,13 +104,12 @@ export class ConfiguracionesComponent implements OnInit, OnDestroy {
 
   editarPeriodo(per: Partial<Periodo> | undefined = undefined) {
     let procesarPeriodo = (p: Partial<Periodo>) => {
+      if (!p) {
+        this.router.navigate(['/']);
 
-      if ( !p ) {
-        this.router.navigate(['/'])
-
-        this.msjService.info("No hay periodos para configurar")
-        return 
-      } 
+        this.msjService.info('No hay periodos para configurar');
+        return;
+      }
 
       this.periodoActual = p;
       this.calcularTranscurrido(p);
@@ -138,4 +151,5 @@ export class ConfiguracionesComponent implements OnInit, OnDestroy {
         });
     }
   }
+
 }
