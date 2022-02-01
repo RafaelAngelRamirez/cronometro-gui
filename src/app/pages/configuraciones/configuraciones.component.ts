@@ -37,7 +37,6 @@ export class ConfiguracionesComponent implements OnInit, OnDestroy {
     return this._periodoActual;
   }
   public set periodoActual(value: Partial<Periodo>) {
-    console.log(value);
     this._periodoActual = value;
   }
 
