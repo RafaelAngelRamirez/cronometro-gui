@@ -77,6 +77,7 @@ export class PeriodoComponent implements OnInit {
 
   seleccionar(per: Partial<Periodo>) {
     this.seleccionado.emit(per);
+    console.log(per)
   }
 }
 
