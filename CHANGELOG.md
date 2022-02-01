@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.7](https://github.com/RafaelAngelRamirez/cronometro-gui/compare/v0.0.6...v0.0.7) (2022-02-01)
+
+
+### Bug Fixes
+
+* Comentarios eliminados _upsi: Formato de commits mal echo. ([355bae4](https://github.com/RafaelAngelRamirez/cronometro-gui/commit/355bae4621830492c892b56a7eae8d53c3a060f0))
+
 ### [0.0.6](https://github.com/RafaelAngelRamirez/cronometro-gui/compare/v0.0.5...v0.0.6) (2022-02-01)
 
 ### [0.0.5](https://github.com/RafaelAngelRamirez/cronometro-gui/compare/v0.0.4...v0.0.5) (2022-02-01)
