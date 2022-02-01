@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.10](https://github.com/RafaelAngelRamirez/cronometro-gui/compare/v0.0.9...v0.0.10) (2022-02-01)
+
+
+### Bug Fixes
+
+* No se enviaba el id del elemento a eliminar ([f2ecf9f](https://github.com/RafaelAngelRamirez/cronometro-gui/commit/f2ecf9f5ce0b733ca7e7a150d713a318193c0239))
+
 ### [0.0.9](https://github.com/RafaelAngelRamirez/cronometro-gui/compare/v0.0.8...v0.0.9) (2022-02-01)
 
 
