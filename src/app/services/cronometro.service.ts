@@ -18,7 +18,7 @@ export class CronometroService {
 
   delete(_id: string) {
     return this.http
-    .delete(this.url.concat(`/{_id}`))
+    .delete(this.url.concat(`/${_id}`))
   }
 
   update(periodo: Partial<Periodo> | undefined) {
