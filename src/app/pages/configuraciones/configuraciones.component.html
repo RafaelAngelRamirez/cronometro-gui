@@ -52,6 +52,23 @@
         </div>
         <div class="col-12 col-md-6 col-lg-4">
           <div class="form-group">
+            <input
+              [(ngModel)]="periodoActual.proyecto"
+              class="form-control"
+              type="text"
+              list="proyectos"
+            />
+            <datalist id="proyectos">
+              <option
+                *ngFor="let proyecto of proyectos"
+                [value]="proyecto"
+              ></option>
+            </datalist>
+            <small class="form-text text-muted">Proyecto</small>
+          </div>
+        </div>
+        <div class="col-12 col-md-6 col-lg-4">
+          <div class="form-group">
             <small class="form-text text-muted">Cliente</small>
             <input
               [(ngModel)]="periodoActual.cliente"
