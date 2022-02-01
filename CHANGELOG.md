@@ -2,6 +2,20 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.5](https://github.com/RafaelAngelRamirez/cronometro-gui/compare/v0.0.4...v0.0.5) (2022-02-01)
+
+
+### Features
+
+* Se emite el periodo en el que se haga click ([a449810](https://github.com/RafaelAngelRamirez/cronometro-gui/commit/a449810f0b5a1c3e026c0e0273087a44900d6d9e))
+* Seleccion de periodos ([cfb6506](https://github.com/RafaelAngelRamirez/cronometro-gui/commit/cfb6506a563c3feaea76c0e25aacdf1a1519f798))
+
+
+### Bug Fixes
+
+* Firesore removido. Boostrap instalacion via npm realizada. ([e6ff1f2](https://github.com/RafaelAngelRamirez/cronometro-gui/commit/e6ff1f2d91a7de1ba78c6eaac9b68ad1eb45ea6b))
+* Hay actaulizaciones de seguridad pendientes ([1ff50f3](https://github.com/RafaelAngelRamirez/cronometro-gui/commit/1ff50f38cbe1971bbca904f87782d0079640e829))
+
 ### [0.0.4](https://github.com/RafaelAngelRamirez/cronometro-gui/compare/v0.0.3...v0.0.4) (2021-12-10)
 
 
