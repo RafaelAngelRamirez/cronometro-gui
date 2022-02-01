@@ -11,10 +11,14 @@
 
   <br />
   <br />
-  <a class="btn btn-outline-warning" [routerLink]="['/configuracion']" role="button"
+  <a
+    class="btn btn-outline-warning"
+    [routerLink]="['/configuracion']"
+    role="button"
     ><i class="fas fa-cog"></i
   ></a>
-
+  <br />
+  <div class="small text-muted">v{{version}}</div>
   <br />
   <br />
   <app-periodo [periodos]="ultimosPeriodos"></app-periodo>

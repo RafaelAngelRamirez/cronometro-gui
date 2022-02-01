@@ -3,6 +3,7 @@ import {
   CronometroService,
   Periodo,
 } from 'src/app/services/cronometro.service';
+import packageJson from 'package.json';
 
 @Component({
   selector: 'app-cronometrar',
@@ -10,6 +11,7 @@ import {
   styleUrls: ['./cronometrar.component.css'],
 })
 export class CronometrarComponent implements OnInit, OnDestroy {
+  version: string = packageJson.version;
   constructor(
     private service: CronometroService,
     private renderer: Renderer2
