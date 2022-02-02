@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.13](https://github.com/RafaelAngelRamirez/cronometro-gui/compare/v0.0.12...v0.0.13) (2022-02-02)
+
+
+### Bug Fixes
+
+* Fechas no se calculan correctamente ([b63db0a](https://github.com/RafaelAngelRamirez/cronometro-gui/commit/b63db0a363e2b3729cc4aff31fc545ff1fc28154))
+
 ### [0.0.12](https://github.com/RafaelAngelRamirez/cronometro-gui/compare/v0.0.11...v0.0.12) (2022-02-02)
 
 
