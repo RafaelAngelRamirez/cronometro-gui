@@ -28,12 +28,18 @@
             <small class="form-text text-muted">Inicio</small>
 
             <input
-              [ngModel]="periodoActual.inicio | date: 'yyyy-MM-ddTHH:mm:ss'"
+              [ngModel]="
+                periodoActual.inicio
+                  | date: 'yyyy-MM-ddTHH:mm:ss':undefined:'es-MX'
+              "
               (ngModelChange)="periodoActual.inicio = $event"
               class="form-control"
               type="datetime-local"
               step="1"
-              max="{{ periodoActual.fin | date: 'yyyy-MM-ddTHH:mm:ss' }}"
+              max="{{
+                periodoActual.fin
+                  | date: 'yyyy-MM-ddTHH:mm:ss':undefined:'es-MX'
+              }}"
             />
           </div>
         </div>
@@ -41,12 +47,18 @@
           <div class="form-group">
             <small class="form-text text-muted">Fin</small>
             <input
-              [ngModel]="periodoActual.fin | date: 'yyyy-MM-ddTHH:mm:ss'"
+              [ngModel]="
+                periodoActual.fin
+                  | date: 'yyyy-MM-ddTHH:mm:ss':undefined:'es-MX'
+              "
               (ngModelChange)="periodoActual.fin = $event"
               class="form-control"
               type="datetime-local"
               step="1"
-              [min]="periodoActual.inicio | date: 'yyyy-MM-ddTHH:mm:ss'"
+              [min]="
+                periodoActual.inicio
+                  | date: 'yyyy-MM-ddTHH:mm:ss':undefined:'es-MX'
+              "
             />
           </div>
         </div>
