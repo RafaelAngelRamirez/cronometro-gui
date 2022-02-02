@@ -174,4 +174,10 @@ export class ConfiguracionesComponent implements OnInit, OnDestroy {
     let selects = Array.from(document.getElementsByTagName('select'));
     selects.forEach((i) => (i.disabled = cargando));
   }
+
+  guardarFecha(fecha: string, periodo: Partial<Periodo>, esInicio = true) {
+    let nF = new Date(fecha);
+    if (esInicio) periodo.inicio = nF;
+    else periodo.fin = nF;
+  }
 }

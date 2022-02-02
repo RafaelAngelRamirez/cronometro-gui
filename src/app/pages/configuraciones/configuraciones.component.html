@@ -32,7 +32,7 @@
                 periodoActual.inicio
                   | date: 'yyyy-MM-ddTHH:mm:ss':undefined:'es-MX'
               "
-              (ngModelChange)="periodoActual.inicio = $event"
+              (ngModelChange)="guardarFecha($event, periodoActual)"
               class="form-control"
               type="datetime-local"
               step="1"
@@ -51,7 +51,7 @@
                 periodoActual.fin
                   | date: 'yyyy-MM-ddTHH:mm:ss':undefined:'es-MX'
               "
-              (ngModelChange)="periodoActual.fin = $event"
+              (ngModelChange)="guardarFecha($event, periodoActual, false)"
               class="form-control"
               type="datetime-local"
               step="1"
